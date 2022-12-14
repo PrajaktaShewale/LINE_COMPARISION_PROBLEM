@@ -3,55 +3,40 @@ namespace lineComparision
 {
     public class Program
     {
-        public static void main(double x1,double y1,double x2,double y2)
-        {
-            double length1, length2;
-            if (x1==x2)//start point equal
-            {
-                double compare = y1.CompareTo(y2);
-                if (compare == 0)
-                {
-                    Console.WriteLine("Both Lines are Equals");
-                }
-                else if(compare>=0)
-                {
-                    Console.WriteLine("2nd line is smaller than 1 st");
-                }
-                else
-                {
-                    Console.WriteLine("1st line is smaller than 2nd");
-                }
-            }
-            else
-            {
-                length1 = x1 - x2;
-                length2 = y1 - y2;
-                double compare = length1.CompareTo(length2);
-                if (compare == 0)
-                {
-                    Console.WriteLine("Both Lines are Equals");
-                }
-                else if (compare >= 0)
-                {
-                    Console.WriteLine("2nd line is smaller than 1 st");
-                }
-                else
-                {
-                    Console.WriteLine("1st line is smaller than 2nd");
-                }
-            }
-        }
         static void Main(string[] args)
         {
-            Console.WriteLine("To Compare Both Line using CompareTo method");
-            Console.WriteLine("Enter 1 st line coordinates ");
-            double x1 = Convert.ToDouble(Console.ReadLine());
-            double y1 = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Enter 2 nd line coordinates ");
-            double x2 = Convert.ToDouble(Console.ReadLine());
-            double y2 = Convert.ToDouble(Console.ReadLine());
-            Program.main(x1,y1,x2,y2);
-
+            bool flag=true;
+            while(flag)
+            {
+                Console.WriteLine("Line Comparision Problem Statments ");
+                Console.WriteLine("1.CalculateLength\n2.Check Equlity Of Two Lines\n3.Compare Two Lines");
+                int check=Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter start and end point of 1 st line ");
+                double x1 = Convert.ToDouble(Console.ReadLine());
+                double y1 = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Enter start and end point of 2 nd line ");
+                double x2 = Convert.ToDouble(Console.ReadLine());
+                double y2 = Convert.ToDouble(Console.ReadLine());
+                switch (check)
+                {
+                    case 1:                       
+                            CalculateLengthUC1 uc1 = new CalculateLengthUC1();                           
+                            uc1.cal(x1, y1, x2, y2);                        
+                        break;
+                    case 2:
+                        EquilityOfTwoLinesUC2 uc2 = new EquilityOfTwoLinesUC2();
+                         Console.WriteLine("To check Both lines are Equals or no using equals method");
+                         uc2.Equility(x1,y1,x2,y2);
+                        break;
+                    case 3:
+                        CompareTwoLinesUC3 uc3 = new CompareTwoLinesUC3();
+                        uc3.CompareLines(x1, y1, x2, y2);
+                        break; 
+                    default:
+                        flag=false;
+                        break;
+                }
+            }
         }
     }
 }
